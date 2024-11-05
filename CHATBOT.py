@@ -3,7 +3,12 @@
 
 import streamlit as st
 from transformers import T5ForConditionalGeneration, T5Tokenizer
+!streamlit run app.py &
 
+# Expose the Streamlit app to the web using ngrok
+from pyngrok import ngrok
+public_url = ngrok.connect(port=8501)
+print(f"Access your Streamlit app at: {public_url}")
 # Load the Flan-T5 model and tokenizer
 model_name = "google/flan-t5-base"  # You can choose a different version as needed
 model = T5ForConditionalGeneration.from_pretrained(model_name)
@@ -27,3 +32,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+    # Write the complete Streamlit app code to a Python file with installation commands included
+
+
+
